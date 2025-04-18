@@ -10,12 +10,12 @@ function BtnEditArt({ elem }) {
   return (
     <div className={classes.block}>
       <button
-        className={classes.delite}
+        className={classes.delete}
         onClick={() => {
           setPopActive(true)
         }}
       >
-        <span>Delite</span>
+        <span>Delete</span>
       </button>
 
       <PopUp popActive={popActive} setPopActive={setPopActive} />

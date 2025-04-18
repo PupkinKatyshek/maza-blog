@@ -42,11 +42,7 @@ function CreateArticle() {
   useEffect(() => {
     dispatch(loading(false))
     const token = localStorage.getItem('token')
-    // console.log(user.username)
-    // console.log(element.author?.username)
-    // console.log(user.username == element.author.username)
 
-    // token ? null : gosign()
     if (!token || !user.username || !element.author.username || !user.username === element.author.username) {
       gosign()
     }
