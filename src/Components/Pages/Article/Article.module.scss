@@ -1,0 +1,30 @@
+.list {
+  width: 941px;
+  padding: 20px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  color: #1890ff;
+  font-size: 20px;
+  line-height: 28px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+.disc {
+  font-size: 12px;
+  line-height: 22px;
+  width: 682px;
+}
+.discriptionblock {
+  display: flex;
+  justify-content: space-between;
+}

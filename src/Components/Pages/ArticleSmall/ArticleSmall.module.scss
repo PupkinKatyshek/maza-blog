@@ -1,0 +1,31 @@
+.article {
+  width: 941px;
+  height: 135px;
+  background: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: 70% 30%;
+  grid-template-rows: 20% 35% 45%;
+  padding: 15px;
+}
+.title {
+  grid-column-start: 1;
+  grid-row-start: 1;
+  color: #1890ff;
+  font-size: 20px;
+  line-height: 28px;
+  display: flex;
+  gap: 15px;
+  align-items: flex-end;
+}
+.tags {
+  grid-column-start: 1;
+  grid-row-start: 2;
+}
+.text {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 3;
+  align-items: center;
+}
