@@ -123,7 +123,7 @@ function CreateAccount() {
           <div className={classes.blockerror}>
             {errors?.checkbox?.type === 'required' && <span className={classes.error}>This checkbox is required</span>}
           </div>
-          <input type="submit" className={classes.submit} />
+          <input type="submit" className={classes.submit} value="Создать" />
         </form>
         <span className={classes.have}>
           Already have an account? <Link to={'/sign-in'}>Sign In.</Link>

@@ -22,6 +22,7 @@ function CreateArticle() {
   const goToArticle = (el) => {
     navigate(`/${el.article.slug}`, { replace: true })
   }
+
   const gosign = () => {
     navigate('/', { replace: true })
   }
@@ -35,18 +36,21 @@ function CreateArticle() {
   } = useForm({
     mode: 'onBlur',
     defaultValues: {
-      tagList: pathname == '/new-article' ? null : element.tagList,
+      tagList: pathname === '/new-article' ? null : element.tagList,
     },
   })
 
   useEffect(() => {
     dispatch(loading(false))
     const token = localStorage.getItem('token')
-
-    if (!token || !user.username || !element.author.username || !user.username === element.author.username) {
+    console.log(token, user, user.username, element, element.author)
+    if (!token) {
+      console.log('не всё совпадает')
       gosign()
+    } else {
+      console.log('всё совпадает')
     }
-  }, [])
+  }, [dispatch, user, element, pathname])
 
   const { fields, append, remove } = useFieldArray({
     control,
@@ -55,7 +59,7 @@ function CreateArticle() {
 
   const onSubmit = (data) => {
     dispatch(loading(true))
-    if (pathname == '/new-article') {
+    if (pathname === '/new-article') {
       apiApiArticles.createArgticle(data).then((e) => {
         if (e.errors) {
           setErrorList(e.errors)
@@ -84,7 +88,7 @@ function CreateArticle() {
     <Spiner />
   ) : (
     <div className={classes.block}>
-      <div className={classes.title}>{pathname == '/new-article' ? 'Create new article' : 'Edit article'}</div>
+      <div className={classes.title}>{pathname === '/new-article' ? 'Create new article' : 'Edit article'}</div>
       <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
         <label>
           Title
@@ -94,7 +98,7 @@ function CreateArticle() {
               required: true,
             })}
             placeholder="Title"
-            defaultValue={pathname == '/new-article' ? null : element.title}
+            defaultValue={pathname === '/new-article' ? null : element.title}
           />
         </label>
 
@@ -106,8 +110,8 @@ function CreateArticle() {
             {...register('description', {
               required: true,
             })}
-            placeholder="Title"
-            defaultValue={pathname == '/new-article' ? null : element.description}
+            placeholder="Description"
+            defaultValue={pathname === '/new-article' ? null : element.description}
           />
         </label>
         {errors?.description?.type === 'required' && <span className={classes.error}>This field is required</span>}
@@ -120,7 +124,7 @@ function CreateArticle() {
               required: true,
             })}
             placeholder="Text"
-            defaultValue={pathname == '/new-article' ? null : element.body}
+            defaultValue={pathname === '/new-article' ? null : element.body}
           />
         </label>
 
@@ -148,13 +152,13 @@ function CreateArticle() {
             className={classes.addtagbtn}
             type="button"
             onClick={() => {
-              append()
+              append('')
             }}
           >
             Add tag
           </button>
         </div>
-        <input type="submit" className={classes.submit} />
+        <input type="submit" className={classes.submit} value="Создать пост" />
       </form>
     </div>
   )

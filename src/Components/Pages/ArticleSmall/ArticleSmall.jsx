@@ -8,6 +8,7 @@ import Tag from '../../Tag'
 import classes from './ArticleSmall.module.scss'
 
 function kitcut(text, limit) {
+  if (typeof text !== 'string') return ''
   text = text.trim()
   if (text.length <= limit) return text
   text = text.slice(0, limit)
@@ -19,12 +20,11 @@ function kitcut(text, limit) {
 }
 
 function ArticleSmall({ el }) {
-  let limit
-  if (el.body.split(' ').length - 1 == 0) {
-    limit = 110
-  } else {
-    limit = 220
+  if (!el || typeof el !== 'object') {
+    return <div>Ошибка: недопустимый элемент</div>
   }
+
+  const limit = el.body && el.body.split(' ').length - 1 === 0 ? 110 : 220
 
   return (
     <div className={classes.article}>
@@ -38,4 +38,5 @@ function ArticleSmall({ el }) {
     </div>
   )
 }
+
 export default ArticleSmall

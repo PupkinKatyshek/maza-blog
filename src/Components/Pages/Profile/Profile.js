@@ -109,7 +109,7 @@ function Profile() {
           <div className={classes.blockerror}>
             {errors?.url?.type === 'pattern' && <span className={classes.error}>Paste validate url</span>}
           </div>
-          <input type="submit" className={classes.submit} />
+          <input type="submit" className={classes.submit} value="Изменить" />
         </form>
       </div>
     </div>

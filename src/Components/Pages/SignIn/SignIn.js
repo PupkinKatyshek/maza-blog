@@ -82,7 +82,7 @@ function SignIn() {
             {errorList ? <span className={classes.error}>Email or password is invalid</span> : null}
             {errors?.password?.type === 'required' && <span className={classes.error}>This field is required</span>}
           </label>
-          <input type="submit" className={classes.submit} />
+          <input type="submit" className={classes.submit} value="Войти" />
         </form>
         <span className={classes.have}>
           Don’t have an account? <Link to={'/sign-up'}>Sign Up.</Link>
